@@ -27,9 +27,25 @@ namespace MainForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RKMethod rng = new RKMethod(0,5,"Lg(x)",0.1);
+            RKMethod rng = new RKMethod(Double.Parse(Y0.Text), Double.Parse(X0.Text), Equation.Text,0.1,Double.Parse(XEnd.Text));
 
-            double k = rng.LKLK();
+            FillResult(rng);
+        }
+
+        private void FillResult(RKMethod obj)
+        {
+            List<double> y = new List<double>();
+            List<double> x = new List<double>();
+            y = obj.CreateFunction();
+            x = obj.CreateXFunc();
+            Result.ColumnCount = 2;
+            Result.RowCount = y.Count;
+            for(int i = 0; i < y.Count; i++)
+            {
+                Result[0, i].Value = y[i];
+                Result[1, i].Value = x[i];
+
+            }
 
         }
 
@@ -129,6 +145,11 @@ namespace MainForm
         private void Arcsin_Click(object sender, EventArgs e)
         {
             Equation.Text += "arcsin()";
+        }
+
+        private void Equation_TextChanged(object sender, EventArgs e)
+        {
+            XStart.Text = X0.Text;
         }
     }
 }
