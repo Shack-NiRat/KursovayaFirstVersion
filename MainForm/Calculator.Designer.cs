@@ -55,7 +55,18 @@
             this.инструментыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.очиститьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.XStart = new System.Windows.Forms.TextBox();
+            this.XEnd = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.Result = new System.Windows.Forms.DataGridView();
+            this.Yi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Xi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Result)).BeginInit();
             this.SuspendLayout();
             // 
             // Equation
@@ -65,11 +76,12 @@
             this.Equation.Name = "Equation";
             this.Equation.Size = new System.Drawing.Size(1174, 31);
             this.Equation.TabIndex = 0;
+            this.Equation.TextChanged += new System.EventHandler(this.Equation_TextChanged);
             // 
             // Calculate
             // 
             this.Calculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Calculate.Location = new System.Drawing.Point(65, 294);
+            this.Calculate.Location = new System.Drawing.Point(65, 368);
             this.Calculate.Name = "Calculate";
             this.Calculate.Size = new System.Drawing.Size(300, 90);
             this.Calculate.TabIndex = 1;
@@ -84,6 +96,7 @@
             this.X0.Name = "X0";
             this.X0.Size = new System.Drawing.Size(67, 31);
             this.X0.TabIndex = 2;
+            this.X0.TextChanged += new System.EventHandler(this.Equation_TextChanged);
             this.X0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X0_KeyPress);
             // 
             // label1
@@ -123,6 +136,7 @@
             this.Y0.Name = "Y0";
             this.Y0.Size = new System.Drawing.Size(100, 31);
             this.Y0.TabIndex = 6;
+            this.Y0.TextChanged += new System.EventHandler(this.Equation_TextChanged);
             this.Y0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X0_KeyPress);
             // 
             // Multiply
@@ -333,11 +347,115 @@
             this.очиститьToolStripMenuItem.Text = "Очистить";
             this.очиститьToolStripMenuItem.Click += new System.EventHandler(this.очиститьToolStripMenuItem_Click);
             // 
-            // Form1
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(134, 461);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(131, 25);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Результат:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(85, 236);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(180, 25);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "На промежутке";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(113, 295);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(19, 25);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "[";
+            // 
+            // XStart
+            // 
+            this.XStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.XStart.Location = new System.Drawing.Point(159, 296);
+            this.XStart.Name = "XStart";
+            this.XStart.Size = new System.Drawing.Size(26, 31);
+            this.XStart.TabIndex = 28;
+            this.XStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X0_KeyPress);
+            // 
+            // XEnd
+            // 
+            this.XEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.XEnd.Location = new System.Drawing.Point(254, 296);
+            this.XEnd.Name = "XEnd";
+            this.XEnd.Size = new System.Drawing.Size(26, 31);
+            this.XEnd.TabIndex = 29;
+            this.XEnd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X0_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(301, 295);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(19, 25);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "]";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(208, 295);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(19, 25);
+            this.label9.TabIndex = 31;
+            this.label9.Text = ";";
+            // 
+            // Result
+            // 
+            this.Result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Result.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Yi,
+            this.Xi});
+            this.Result.Location = new System.Drawing.Point(36, 521);
+            this.Result.Name = "Result";
+            this.Result.ReadOnly = true;
+            this.Result.RowHeadersVisible = false;
+            this.Result.RowTemplate.Height = 28;
+            this.Result.Size = new System.Drawing.Size(369, 150);
+            this.Result.TabIndex = 32;
+            // 
+            // Yi
+            // 
+            this.Yi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Yi.HeaderText = "Yi";
+            this.Yi.Name = "Yi";
+            this.Yi.ReadOnly = true;
+            // 
+            // Xi
+            // 
+            this.Xi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Xi.HeaderText = "Xi";
+            this.Xi.Name = "Xi";
+            this.Xi.ReadOnly = true;
+            // 
+            // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 680);
+            this.Controls.Add(this.Result);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.XEnd);
+            this.Controls.Add(this.XStart);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.Log);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.Arccotan);
@@ -363,10 +481,11 @@
             this.Controls.Add(this.Equation);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "Calculator";
             this.Text = "Calculator";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Result)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -401,6 +520,16 @@
         private System.Windows.Forms.ToolStripMenuItem инструментыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem очиститьToolStripMenuItem;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox XStart;
+        private System.Windows.Forms.TextBox XEnd;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridView Result;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Yi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Xi;
     }
 }
 
